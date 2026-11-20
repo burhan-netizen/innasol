@@ -204,12 +204,63 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 @media(max-width:760px){.wa{display:none}.bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -6px 24px #0004}.bar a{display:flex;justify-content:center;align-items:center;gap:8px;padding:17px 10px;font-weight:800;color:#fff;text-decoration:none}.bar .c{background:var(--blue)}.bar .w2{background:#25d366}}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span{clip-path:none}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* quote builder */
+.est{background:var(--bg)}
+.est-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;margin-top:34px;align-items:start}
+@media(max-width:900px){.est-grid{grid-template-columns:1fr}}
+.est-box{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:30px;box-shadow:0 20px 50px #0f4c4a14}
+@media(max-width:560px){.est-box{padding:22px 18px}}
+.est-box fieldset{border:0;padding:0;margin:0 0 28px;min-width:0}
+.est-box fieldset:last-child{margin-bottom:0}
+.est-box legend{font:800 1.2rem 'Bricolage Grotesque';color:var(--ink);margin-bottom:14px;padding:0;display:flex;gap:10px;align-items:center}
+.est-box legend b{width:30px;height:30px;border-radius:50%;background:var(--sun);color:#3a2a00;display:grid;place-items:center;font-size:.95rem;flex:none}
+.est-box .sub{margin:0 0 4px}
+.est-box .mini{font-weight:700;color:var(--ink);font-size:.95rem;margin:18px 0 8px}
+.chips span{position:relative}
+.est-sum{position:sticky;top:100px;background:var(--teal);color:#e8f7ee;border-radius:30px;padding:30px;overflow:hidden}
+@media(max-width:900px){.est-sum{position:relative;top:0}}
+.est-sum:after{content:"";position:absolute;right:-50px;top:-50px;width:150px;height:150px;border-radius:50%;background:var(--sun);opacity:.9}
+.est-sum>*{position:relative;z-index:1}
+.est-sum h3{color:#fff;font-size:1.7rem;margin-bottom:6px;max-width:12ch}
+.sl{list-style:none;padding:0;margin:16px 0 18px}
+.sl li{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed #ffffff30;font-size:.95rem}
+.sl li span{opacity:.75;flex:none}
+.sl li b{text-align:right;color:#fff;font-weight:600}
+.mlab{font-weight:700;font-size:.9rem;opacity:.85;margin-bottom:8px}
+.mt{display:flex;gap:6px}
+.mt i{flex:1;height:10px;border-radius:9px;background:#ffffff26;transition:background .4s}
+.mt i.on{background:linear-gradient(90deg,var(--sun),#ffd56a)}
+.mtxt{margin:10px 0 20px;font-weight:600;color:#fff}
+.est-sum .btn{width:100%;justify-content:center;margin-top:10px}
+.est-sum .btn.wab{background:#25d366;color:#052b12;box-shadow:0 10px 24px #25d36655}
+.est-sum .btn.ghost{color:#fff;box-shadow:inset 0 0 0 2px #ffffff55}
+.est-sum .btn[aria-disabled=true]{opacity:.5;pointer-events:none;box-shadow:none}
+.est-sum .fine{font-size:.85rem;opacity:.75;margin-top:14px}
+/* reviews */
+.rev{background:var(--mint)}
+.rsum{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center;margin:26px 0 6px}
+.rsum .big{font:800 3.8rem/1 'Bricolage Grotesque';color:var(--blue)}
+.stars{color:var(--sun);letter-spacing:3px;font-size:1.3rem;text-shadow:0 1px 0 #0001}
+.rsum small{display:block;font-weight:600;opacity:.8}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:22px;margin-top:28px}
+.rc{position:relative;background:var(--card);border:1px solid var(--line);padding:28px 26px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .35s cubic-bezier(.3,1.5,.5,1),box-shadow .35s,border-color .35s}
+.rc:nth-child(odd){border-radius:26px 26px 26px 70px}.rc:nth-child(even){border-radius:70px 26px 26px 26px}
+.rc:hover{transform:translateY(-8px);border-color:var(--sun);box-shadow:0 22px 44px #0f4c4a26}
+.rc blockquote{margin:0;font-size:1.02rem}
+.rc .tag{align-self:flex-start;background:var(--mint);border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:.8rem;font-weight:700;color:var(--ink)}
+.who{display:flex;gap:12px;align-items:center;margin-top:auto}
+.av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;display:grid;place-items:center;font:800 1.1rem 'Bricolage Grotesque';flex:none}
+.who b{display:block;color:var(--ink);line-height:1.2}.who span{font-size:.85rem;opacity:.75}
+.demo-note{display:none}
+[data-demo] .demo-note{display:block;margin-top:18px;padding:12px 16px;border:2px dashed #e0a100;border-radius:14px;background:#fff4c9;color:#5c3d00;font-weight:600;font-size:.92rem}
+[data-demo] .rc:after{content:"EXAMPLE";position:absolute;top:14px;right:16px;font:800 .62rem Figtree;letter-spacing:.14em;color:#6b4700;background:#ffe58a;padding:3px 9px;border-radius:99px}
 </style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-call" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path transform="translate(6.6 6.6) scale(.46)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol></svg>
 <nav><div class="w"><a class="brand" href="#top" aria-label="Innasol home"><img class="ls" alt="Innasol logo"></a>
-<ul><li><a href="#services">Services</a></li><li><a href="#why">Why me</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
+<ul><li><a href="#services">Services</a></li><li><a href="#estimate">Quote builder</a></li><li><a href="#why">Why me</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li></ul>
 <a class="btn sun" href="#contact">Free quote</a></div></nav>
 
 <header class="hero" id="top">
@@ -239,6 +290,56 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 <div class="it"><em>📦</em>End of tenancy</div><div class="it"><em>🏗️</em>After-building &amp; renovation cleaning</div><div class="it"><em>🔑</em>Ready-to-let property</div><div class="it"><em>🔌</em>Behind appliances</div>
 <div class="it"><em>🧊</em>Inside ovens, fridges &amp; cabinets</div><div class="it"><em>🧽</em>Grout &amp; tile scrubbing</div></div>
 </div></section>
+
+<section class="est" id="estimate"><div class="w">
+<h2 class="rv">Build your quote in 30 seconds</h2>
+<p class="lead rv">Tell me about your space and watch your clean take shape. Send it to me on WhatsApp and I’ll come back with your free quote.</p>
+<div class="est-grid" id="est">
+<div class="est-box rv">
+<fieldset><legend><b>1</b>What do you need?</legend>
+<div class="cards">
+<span><input type="radio" name="svc" id="v0" value="home"><label for="v0"><em>🏠</em>Home clean<small>Regular visits</small></label></span>
+<span><input type="radio" name="svc" id="v1" value="office"><label for="v1"><em>🏢</em>Office or shop<small>Also schools &amp; cafés</small></label></span>
+<span><input type="radio" name="svc" id="v2" value="deep"><label for="v2"><em>✨</em>Deep clean<small>Top to bottom</small></label></span>
+<span><input type="radio" name="svc" id="v3" value="tenancy"><label for="v3"><em>📦</em>End of tenancy<small>Ready to let</small></label></span>
+<span><input type="radio" name="svc" id="v4" value="builders"><label for="v4"><em>🏗️</em>After builders<small>Dust &amp; debris</small></label></span>
+</div></fieldset>
+<fieldset><legend><b>2</b>How big is the space?</legend>
+<p class="sub" id="sizeHint">Choose a service first and the sizes will appear here.</p>
+<div class="cards" id="sizeCards"></div>
+<div id="bathWrap" hidden><p class="mini">Bathrooms</p>
+<div class="chips"><span><input type="radio" name="bath" id="b0" value="1" checked><label for="b0">1</label></span><span><input type="radio" name="bath" id="b1" value="2"><label for="b1">2</label></span><span><input type="radio" name="bath" id="b2" value="3+"><label for="b2">3 or more</label></span></div></div>
+</fieldset>
+<fieldset><legend><b>3</b>Any extras?</legend>
+<div class="chips">
+<span><input type="checkbox" name="ex" id="e0" value="Inside oven"><label for="e0">Inside oven</label></span>
+<span><input type="checkbox" name="ex" id="e1" value="Inside fridge &amp; freezer"><label for="e1">Inside fridge &amp; freezer</label></span>
+<span><input type="checkbox" name="ex" id="e2" value="Inside cabinets"><label for="e2">Inside cabinets</label></span>
+<span><input type="checkbox" name="ex" id="e3" value="Behind appliances"><label for="e3">Behind appliances</label></span>
+<span><input type="checkbox" name="ex" id="e4" value="Grout &amp; tile scrubbing"><label for="e4">Grout &amp; tile scrubbing</label></span>
+</div></fieldset>
+<fieldset><legend><b>4</b>How often?</legend>
+<div class="chips">
+<span><input type="radio" name="fq" id="q0" value="One-off"><label for="q0">One-off</label></span>
+<span><input type="radio" name="fq" id="q1" value="Weekly"><label for="q1">Weekly</label></span>
+<span><input type="radio" name="fq" id="q2" value="Fortnightly"><label for="q2">Fortnightly</label></span>
+<span><input type="radio" name="fq" id="q3" value="Monthly"><label for="q3">Monthly</label></span>
+</div></fieldset>
+<fieldset><legend><b>5</b>Where is it?</legend>
+<div class="fld" style="margin-bottom:0"><input id="pc" type="text" autocomplete="postal-code" placeholder=" "><label for="pc">Postcode (optional)</label></div>
+</fieldset>
+</div>
+<aside class="est-sum rv" aria-live="polite">
+<h3>Your clean at a glance</h3>
+<ul class="sl" id="sl"></ul>
+<p class="mlab">Size of job</p>
+<div class="mt" id="mt" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<p class="mtxt" id="mtxt">Pick a service to get started.</p>
+<a class="btn wab" id="estWa" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</a>
+<a class="btn ghost" id="estMail" href="#" aria-disabled="true">Email it instead</a>
+<p class="fine">Sending this doesn’t book anything. I’ll reply with your free quote.</p>
+</aside>
+</div></div></section>
 
 <section id="why"><div class="w">
 <h2 class="rv">Why choose me?</h2>
@@ -273,7 +374,22 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 <div class="ph g3"><div class="play">▶</div>Video<small>Add your video here</small></div>
 <div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
 </div></div></section>
-<section style="padding-top:0"><div class="w"><h2 class="rv">How it works</h2>
+<!-- REVIEWS: these are EXAMPLE reviews. To go live: replace each <article class="rc"> with a real review, then DELETE the data-demo attribute on this <section> (that also removes the EXAMPLE tags and the yellow note). Update the rating in .rsum and set GOOGLE_REVIEWS_URL in the script. -->
+<section class="rev" id="reviews" data-demo><div class="w">
+<h2 class="rv">What my customers say</h2>
+<p class="lead rv">Kind words from homes and businesses around Wembley.</p>
+<div class="rsum rv"><div class="big">5.0</div><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><small>Rated by local customers on Google</small></div><a class="btn ghost" id="gLink" href="#" target="_blank" rel="noopener">Read my Google reviews</a></div>
+<p class="demo-note">Example reviews and rating, for layout only. Swap in real customer reviews before launch.</p>
+<div class="rgrid rv">
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">End of tenancy</span><blockquote>“Irina left the flat spotless. The oven looked brand new and the grout was gleaming. My landlord had nothing to complain about.”</blockquote><div class="who"><div class="av" aria-hidden="true">S</div><div><b>Sarah M.</b><span>Wembley</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along. One person we can trust.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Ready to let</span><blockquote>“We needed a quick turnaround between tenants. Booked fast and the place was spotless. We’ll definitely use her again.”</blockquote><div class="who"><div class="av" aria-hidden="true">T</div><div><b>Tom &amp; Aisha R.</b><span>Wembley Park</span></div></div></article>
+</div>
+</div></section>
+<section><div class="w"><h2 class="rv">How it works</h2>
 <div class="steps rv">
 <div class="step"><h3>Tell me what you need</h3><p>Fill in the form below or call. It takes a minute.</p></div>
 <div class="step"><h3>Get your free quote</h3><p>A clear, affordable price with no surprises.</p></div>
@@ -323,7 +439,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 
 <footer><div class="w fg">
 <div><a class="brand" href="#top" aria-label="Innasol home"><img class="ls lf" alt="Innasol logo"></a><p>Professional local cleaning for homes and businesses. Reliable, affordable and high quality, with spotless results every time.</p><a class="btn sun wl" href="#" target="_blank" rel="noopener" style="display:inline-flex;margin:0">Chat on WhatsApp</a></div>
-<div><h4>Explore</h4><a href="#services">Services</a><a href="#why">Why choose me</a><a href="#about">About Irina</a><a href="#gallery">Gallery</a><a href="#faq">FAQ</a></div>
+<div><h4>Explore</h4><a href="#services">Services</a><a href="#why">Why choose me</a><a href="#about">About Irina</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#estimate">Quote builder</a><a href="#faq">FAQ</a></div>
 <div><h4>Services</h4><span>Commercial cleaning</span><span>Deep cleaning</span><span>End of tenancy</span><span>After-building cleans</span><span>Ready-to-let property</span></div>
 <div><h4>Get in touch</h4><a class="tl" href="#">Call Irina</a><a class="ml" href="#">Email</a><a class="wl" href="#" target="_blank" rel="noopener">WhatsApp</a><span>Wembley &amp; surrounding areas</span><span>Flexible hours · Fast bookings</span></div>
 </div>
@@ -373,6 +489,71 @@ document.querySelectorAll('.wl').forEach(a=>a.href='https://wa.me/'+WA+'?text='+
 document.querySelectorAll('.tl').forEach(a=>a.href='tel:'+PHONE.replace(/\s/g,''));
 document.querySelectorAll('.ml').forEach(a=>a.href='mailto:'+EMAIL);
 document.querySelectorAll('.ls').forEach(i=>i.src=$('#logo').src);
+
+// ===== Reviews: paste your Google reviews link here (leave "" to hide the button) =====
+const GOOGLE_REVIEWS_URL="";
+if(GOOGLE_REVIEWS_URL){$('#gLink').href=GOOGLE_REVIEWS_URL}else{$('#gLink').hidden=true}
+// ===== Quote builder (no prices: it builds a WhatsApp message for Irina) =====
+(function(){
+const SV={home:{n:'Regular home clean',k:'h',b:0},office:{n:'Office, shop, school or café',k:'b',b:0},deep:{n:'Deep clean',k:'h',b:2},tenancy:{n:'End of tenancy clean',k:'h',b:2},builders:{n:'After-builders clean',k:'h',b:3}};
+const HOME=[['🛋️','Studio','Open plan','Studio'],['🛏️','1 bed','Flat or house','1 bedroom'],['🏠','2 beds','Flat or house','2 bedrooms'],['🏡','3 beds','Family home','3 bedrooms'],['🏘️','4+ beds','Larger home','4+ bedrooms']];
+const COMM=['🏪','Commercial','Shop, office, other','Commercial unit'];
+const BIZ=[['🪑','Small','Room or small shop','Small'],['☕','Medium','Café or a few rooms','Medium'],['🏬','Large','Multi-room or big unit','Large']];
+const $q=s=>document.querySelector(s),$a=s=>[...document.querySelectorAll(s)];
+const val=n=>{const x=document.querySelector(`input[name=${n}]:checked`);return x?x.value:''};
+const lab=n=>{const x=document.querySelector(`input[name=${n}]:checked`);return x?x.nextElementSibling:null};
+let sizes=[];
+function drawSizes(key){
+ const sv=SV[key];sizes=[];
+ if(!sv){$q('#sizeCards').innerHTML='';$q('#sizeHint').hidden=false;return}
+ sizes=sv.k==='b'?BIZ.map((x,i)=>({x,sc:i*2})):[...HOME.map((x,i)=>({x,sc:i})),...(key==='home'?[]:[{x:COMM,sc:3,comm:true}])];
+ $q('#sizeHint').hidden=true;
+ const box=$q('#sizeCards');box.innerHTML='';
+ sizes.forEach((o,i)=>{const sp=document.createElement('span');
+  sp.innerHTML=`<input type="radio" name="size" id="z${i}" value="${i}"><label for="z${i}"><em>${o.x[0]}</em>${o.x[1]}<small>${o.x[2]}</small></label>`;box.appendChild(sp)});
+}
+function row(k,v){const li=document.createElement('li');const a=document.createElement('span');a.textContent=k;const b=document.createElement('b');b.textContent=v;li.append(a,b);return li}
+function state(){
+ const key=val('svc'),sv=SV[key],si=val('size')!==''?sizes[+val('size')]:null;
+ const home=!!sv&&sv.k==='h'&&!(si&&si.comm);
+ const ex=$a('input[name=ex]:checked').map(x=>x.value),fq=val('fq'),bath=val('bath'),pc=$q('#pc').value.trim();
+ return {key,sv,si,home,ex,fq,bath,pc}
+}
+function update(){
+ const t=state();
+ $q('#bathWrap').hidden=!(t.sv&&t.si&&t.home);
+ // summary
+ const L=$q('#sl');L.innerHTML='';
+ L.append(row('Service',t.sv?t.sv.n:'Not chosen yet'));
+ if(t.sv)L.append(row('Space',t.si?t.si.x[3]:'Not chosen yet'));
+ if(t.sv&&t.si&&t.home)L.append(row('Bathrooms',t.bath));
+ if(t.sv)L.append(row('Extras',t.ex.length?t.ex.map(e=>e.replace(/&amp;/g,'&')).join(', '):'None'));
+ if(t.sv)L.append(row('How often',t.fq||'Not chosen yet'));
+ if(t.pc)L.append(row('Postcode',t.pc));
+ // size of job meter (just a visual guide, no prices)
+ let score=0,lvl=0;
+ if(t.sv){score=t.sv.b+(t.si?t.si.sc:1)+(t.home&&t.si?(t.bath==='1'?0:t.bath==='2'?1:2):0)+t.ex.length*.75;
+  lvl=score<2.5?1:score<5?2:score<7.5?3:4}
+ $a('#mt i').forEach((i,n)=>i.classList.toggle('on',n<lvl));
+ $q('#mtxt').textContent=['Pick a service to get started.','A light clean','A standard clean','A big job, no problem','A major job, happy to take it on'][lvl];
+ // message
+ const w=$q('#estWa'),m=$q('#estMail');
+ if(!t.sv){[w,m].forEach(a=>{a.setAttribute('aria-disabled','true');a.href='#'});return}
+ const dec=s=>s.replace(/&amp;/g,'&');
+ const msg=['Hi Irina, I’d like a free cleaning quote.','Service: '+t.sv.n,'Space: '+(t.si?t.si.x[3]:'Not sure yet')]
+  .concat(t.si&&t.home?['Bathrooms: '+t.bath]:[])
+  .concat(['Extras: '+(t.ex.length?t.ex.map(dec).join(', '):'None'),'How often: '+(t.fq||'Not sure yet')])
+  .concat(t.pc?['Postcode: '+t.pc]:[]).concat(['(Sent from the Innasol website)']).join('\n');
+ w.removeAttribute('aria-disabled');m.removeAttribute('aria-disabled');
+ w.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+ m.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Quote request from the website')+'&body='+encodeURIComponent(msg);
+}
+$q('#est').addEventListener('change',e=>{if(e.target.name==='svc')drawSizes(e.target.value);update()});
+$q('#pc').addEventListener('input',update);
+$q('#estWa').addEventListener('click',e=>{if(e.currentTarget.getAttribute('aria-disabled')==='true'){e.preventDefault();return}burst(e.clientX,e.clientY,12)});
+$q('#estMail').addEventListener('click',e=>{if(e.currentTarget.getAttribute('aria-disabled')==='true')e.preventDefault()});
+update();
+})();
 </script>
 </body>
 </html>
