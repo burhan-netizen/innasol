@@ -42,6 +42,7 @@ section{padding:clamp(80px,9vw,128px) 0}
 .eb{display:flex;align-items:center;gap:12px;font:600 .78rem/1 Figtree,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
 .eb:before{content:"";width:28px;height:2px;border-radius:2px;background:var(--sun)}
 .ic{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icw{fill:currentColor!important;stroke:none!important}
 :focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -54,12 +55,13 @@ section{padding:clamp(80px,9vw,128px) 0}
 .btn.sun{background:var(--sun);color:var(--gold-ink);box-shadow:0 1px 0 #ffffff66 inset,0 12px 26px -12px #b98014aa}
 .btn.glass{background:#ffffff1f;color:#fff;box-shadow:inset 0 0 0 1px #ffffff4d;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .btn.glass:hover{background:#ffffff2e}
+.btn.wapp{background:#25d366;color:#04301a;box-shadow:0 1px 0 #ffffff55 inset,0 14px 30px -12px #25d366cc}.btn.wapp:hover{background:#2ee072}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 30%,transparent)}
 .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
 
 /* demo banner */
 .demo{background:#071f1e;color:#cfe4dc;font-size:.84rem;text-align:center;padding:9px 16px;line-height:1.4}
-.demo b{color:var(--sun);font-weight:600}
+.demo b{color:var(--sun);font-weight:600}.demo a{color:#fff;text-underline-offset:3px}.demo a:hover{color:var(--sun)}
 
 /* nav */
 nav{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
@@ -159,27 +161,46 @@ nav ul a:hover{opacity:1}nav ul a:hover:after{transform:scaleX(1)}
 .ba-sec .demo-note{border-color:#ffffff40;background:#ffffff12;color:#e3f0eb}
 
 /* why */
-.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,96px);align-items:start}
-.why-grid .lead{margin-bottom:32px}
-.why-list{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.why-list>div{padding:34px 28px 34px 0;border-bottom:1px solid var(--line)}
-.why-list>div:nth-child(even){padding-left:28px;padding-right:0;border-left:1px solid var(--line)}
-.why-list i{width:52px;height:52px;border-radius:16px;background:var(--mint);display:grid;place-items:center;color:var(--teal);margin-bottom:22px;transition:transform .4s var(--ease),background-color .4s,color .4s}
-.why-list>div:hover i{transform:translateY(-3px) rotate(-6deg);background:var(--sun);color:var(--gold-ink)}
-.why-list .ic{width:24px;height:24px}
-.why-list h3{font-size:1.3rem;margin-bottom:8px;letter-spacing:-.02em}
-.why-list p{color:var(--muted);font-size:.98rem}
-@media(max-width:900px){.why-grid{grid-template-columns:1fr}}
-@media(max-width:560px){.why-list{grid-template-columns:1fr}.why-list>div:nth-child(even){padding-left:0;border-left:0}.why-list>div{padding-right:0}}
+.why{background:radial-gradient(900px 500px at 85% 0%,#14605d 0%,transparent 60%),radial-gradient(700px 500px at 0% 100%,#0e4644 0%,transparent 60%),#0a3533;color:#cfe4dc;border-radius:40px;margin:0 12px;position:relative;overflow:hidden}
+.why:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff10 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%);pointer-events:none}
+.why .w{position:relative}
+.why h2{color:#fff}.why h2 .soft{color:#8fb6ac}.why .eb{color:#b9d6cd}.why .lead{color:#cfe4dc;margin-bottom:34px}
+.why-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,88px);align-items:center}
+.why-list{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.wc{--mx:50%;--my:0%;position:relative;padding:32px 28px 30px;border-radius:26px;background:linear-gradient(160deg,#ffffff0f,#ffffff05);border:1px solid #ffffff1a;overflow:hidden;isolation:isolate;transition:transform .5s var(--ease),border-color .5s}
+.wc:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(320px circle at var(--mx) var(--my),#e9ad2f2e,transparent 60%);opacity:0;transition:opacity .4s}
+.wc:hover{transform:translateY(-4px);border-color:#e9ad2f66}.wc:hover:before{opacity:1}
+.wc .n{position:absolute;top:26px;right:26px;font:600 .82rem Figtree;letter-spacing:.14em;color:#8fb6ac}
+.wc i{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(145deg,#f4c55a,#d9961c);color:var(--gold-ink);box-shadow:0 0 0 1px #ffffff40 inset,0 10px 30px -6px #e9ad2f99,0 0 40px -8px #e9ad2f88;margin-bottom:24px;transition:transform .5s var(--ease)}
+.wc:hover i{transform:rotate(-8deg) scale(1.06)}
+.wc .ic{width:26px;height:26px;stroke-width:1.9}
+.wc h3{color:#fff;font-size:1.3rem;margin-bottom:8px;letter-spacing:-.02em}
+.wc p{color:#a9c8bf;font-size:.98rem}
+@media(max-width:960px){.why-grid{grid-template-columns:1fr}.why{margin:0 8px;border-radius:28px}}
+@media(max-width:560px){.why-list{grid-template-columns:1fr}}
 
 /* process */
 .how{background:var(--mint)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;counter-reset:s}
-.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px 30px 32px;box-shadow:var(--sh-1);overflow:hidden}
-.step:before{counter-increment:s;content:"0" counter(s);display:block;font:600 4.4rem/1 'Bricolage Grotesque';letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--teal) 35%,transparent);margin-bottom:26px}
-.step:after{content:"";position:absolute;right:-40px;top:-40px;width:110px;height:110px;border-radius:50%;background:var(--sun);opacity:.14}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;counter-reset:s;position:relative}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:34px 30px 32px;box-shadow:var(--sh-1);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.step:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.step .num{display:block;font:600 4.6rem/1 'Bricolage Grotesque';letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px color-mix(in srgb,var(--teal) 35%,transparent);background:linear-gradient(180deg,var(--sun),#d9961c) no-repeat 0 100%/100% 0;-webkit-background-clip:text;background-clip:text;margin-bottom:26px;transition:background-size 1.1s var(--ease) .45s,-webkit-text-stroke-color 1s .45s}
+.step .bar{position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--sun),#f4c55a);transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease) .2s}
+.step:after{content:"";position:absolute;right:-40px;top:-40px;width:110px;height:110px;border-radius:50%;background:var(--sun);opacity:.14;transform:scale(0);transition:transform 1s var(--ease) .5s}
 .step h3{font-size:1.4rem;margin-bottom:8px}.step p{color:var(--muted)}
-@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.js .step.in .num{background-size:100% 100%;-webkit-text-stroke-color:#d9961c}
+.js .step.in .bar,.js .step.in:after{transform:none}
+.no-js .step .num,html:not(.js) .step .num{background-size:100% 100%}
+.js .steps .step.d1{transition-delay:.25s}.js .steps .step.d2{transition-delay:.5s}
+.js .step.d1 .bar{transition-delay:.45s}.js .step.d2 .bar{transition-delay:.7s}
+.js .step.d1 .num{transition-delay:.7s}.js .step.d2 .num{transition-delay:.95s}
+.connect{position:absolute;left:0;right:0;top:-26px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.connect:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--sun),#f4c55a);transform:scaleX(0);transform-origin:left;transition:transform 1.8s var(--ease) .1s}
+.steps.in .connect:after{transform:none}
+.connect i{position:absolute;top:-5px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--line);transition:background-color .4s,border-color .4s}
+.connect i:nth-child(1){left:calc(16.66% - 6px);transition-delay:.3s}.connect i:nth-child(2){left:calc(50% - 6px);transition-delay:.9s}.connect i:nth-child(3){left:calc(83.33% - 6px);transition-delay:1.5s}
+.connect{overflow:visible}.steps.in .connect i{background:var(--sun);border-color:var(--sun)}
+@media(max-width:860px){.steps{grid-template-columns:1fr}.connect{display:none}}
 
 /* gallery */
 .gal-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
@@ -200,11 +221,21 @@ nav ul a:hover{opacity:1}nav ul a:hover:after{transform:scaleX(1)}
 .rsum .big{font:600 3.4rem/1 'Bricolage Grotesque';letter-spacing:-.04em;color:var(--ink)}
 .rsum small{display:block;color:var(--muted);font-size:.88rem}
 .stars{display:flex;gap:2px;color:var(--sun)}.stars .ic{width:18px;height:18px;fill:currentColor;stroke:none}
-.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.rfeat{margin-top:40px}
+.rmq{margin:18px -24px 0;display:flex;flex-direction:column;gap:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mrow{overflow:hidden}
+.mtrack{display:flex;gap:16px;width:max-content;padding:6px 0;animation:rmq 48s linear infinite}
+.r2 .mtrack{animation-direction:reverse;animation-duration:56s}
+.rmq:hover .mtrack{animation-play-state:paused}
+.mtrack .rc{width:380px;flex:none}
+@keyframes rmq{to{transform:translateX(calc(-50% - 8px))}}
+@media(max-width:640px){.mtrack .rc{width:300px}.rmq{margin:18px -24px 0}}
+@media(prefers-reduced-motion:reduce){.mrow{overflow-x:auto}.mtrack [aria-hidden=true]{display:none}}
 .rc{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 26px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .rc:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
-.rc.feat{grid-column:span 2;background:var(--teal);border-color:var(--teal);color:#d3e6df}
-.rc.feat blockquote{font:500 clamp(1.4rem,2.3vw,1.9rem)/1.3 'Bricolage Grotesque';letter-spacing:-.02em;color:#fff}
+.rc.feat{background:radial-gradient(600px 300px at 100% 0%,#14605d,transparent 70%),var(--teal);border-color:var(--teal);color:#d3e6df;padding:clamp(30px,4vw,52px)}
+.rc.feat:after{content:"“";position:absolute;right:clamp(24px,4vw,52px);top:-10px;font:700 14rem/1 'Bricolage Grotesque';color:var(--sun);opacity:.18;pointer-events:none}
+.rc.feat blockquote{font:500 clamp(1.45rem,2.8vw,2.3rem)/1.25 'Bricolage Grotesque';letter-spacing:-.025em;color:#fff;max-width:30ch}
 .rc.feat .who{border-top-color:#ffffff26}.rc.feat .who b{color:#fff}.rc.feat .who span{color:#a9c8bf}.rc.feat .av{background:var(--sun);color:var(--gold-ink)}.rc.feat .tg{background:#ffffff1a;color:#e3f0eb}
 .rc blockquote{margin:0;font-size:1.04rem;line-height:1.6;color:var(--ink)}
 .rc .tg{align-self:flex-start;background:var(--mint);border-radius:99px;padding:4px 12px;font-size:.78rem;font-weight:600;color:var(--ink)}
@@ -212,8 +243,6 @@ nav ul a:hover{opacity:1}nav ul a:hover:after{transform:scaleX(1)}
 .who{display:flex;gap:12px;align-items:center;margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
 .av{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font:600 1.05rem 'Bricolage Grotesque';flex:none}
 .who b{display:block;color:var(--ink);line-height:1.2}.who span{font-size:.85rem;color:var(--muted)}
-@media(max-width:960px){.rgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.rgrid{grid-template-columns:1fr}.rc.feat{grid-column:span 1}}
 
 /* about */
 .about{overflow:clip}
@@ -227,11 +256,14 @@ nav ul a:hover{opacity:1}nav ul a:hover:after{transform:scaleX(1)}
 .ph-sun{position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:var(--sun);z-index:-1}
 .about p{max-width:60ch}.about p+p{margin-top:14px}
 .sig{font:600 1.5rem 'Bricolage Grotesque';color:var(--ink);margin-top:22px;letter-spacing:-.02em}.sig span{display:block;font:500 .9rem Figtree;color:var(--muted);letter-spacing:0}
-.vals{display:grid;grid-template-columns:repeat(3,1fr);margin-top:34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.vals div{padding:22px 18px 22px 0}.vals div+div{padding-left:18px;border-left:1px solid var(--line)}
-.vals b{display:block;font:600 1.12rem 'Bricolage Grotesque';color:var(--ink);margin-bottom:4px}.vals span{font-size:.9rem;color:var(--muted)}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.vals>div{position:relative;padding:22px 20px 22px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--sh-1);overflow:hidden;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s}
+.vals>div:after{content:"";position:absolute;left:20px;right:20px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,var(--sun),#f4c55a);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.vals>div:hover{transform:translateY(-4px);box-shadow:var(--sh-2);border-color:#e9ad2f55}.vals>div:hover:after{transform:scaleX(1)}
+.vals i{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#f4c55a,#d9961c);color:var(--gold-ink);box-shadow:0 8px 20px -8px #e9ad2faa;margin-bottom:16px}.vals .ic{width:21px;height:21px;stroke-width:1.9}
+.vals b{display:block;font:600 1.12rem 'Bricolage Grotesque';color:var(--ink);margin-bottom:4px;letter-spacing:-.01em}.vals span{display:block;font-size:.9rem;line-height:1.45;color:var(--muted)}
 @media(max-width:900px){.about-grid{grid-template-columns:1fr}.ph-wrap{max-width:460px}.ph-badge{left:12px}}
-@media(max-width:520px){.vals{grid-template-columns:1fr}.vals div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:560px){.vals{grid-template-columns:1fr}}
 
 /* quote builder */
 .est{background:var(--mint)}
@@ -277,7 +309,7 @@ nav ul a:hover{opacity:1}nav ul a:hover:after{transform:scaleX(1)}
 .mt{display:flex;gap:6px}.mt i{flex:1;height:6px;border-radius:9px;background:#ffffff1f;transition:background .4s}.mt i.on{background:var(--sun)}
 .mtxt{margin:12px 0 24px;font:600 1.1rem 'Bricolage Grotesque';letter-spacing:-.01em;color:#fff}
 .est-sum .btn{width:100%;margin-top:10px}
-.est-sum .btn.wab{background:#25d366;color:#05301a;box-shadow:0 12px 26px -12px #25d366}
+.est-sum .btn.wab{background:#25d366;color:#04301a;box-shadow:0 1px 0 #ffffff55 inset,0 12px 26px -12px #25d366}.est-sum .btn.wab .ic{width:21px;height:21px}
 .est-sum .btn.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px #ffffff40}.est-sum .btn.ghost:hover{box-shadow:inset 0 0 0 1.5px #fff}
 .est-sum .btn[aria-disabled=true]{opacity:.45;pointer-events:none;box-shadow:none}
 .est-sum .fine{font-size:.84rem;color:#a9c8bf;margin-top:16px}
@@ -297,14 +329,14 @@ details p{margin:-6px 0 0;padding:0 0 22px;color:var(--muted);max-width:68ch}
 /* contact */
 .contact{padding-top:0}
 .cbox{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center;background:linear-gradient(155deg,var(--teal),var(--teal-2));color:#d7ebe4;border-radius:40px;padding:clamp(40px,6vw,80px);position:relative;overflow:hidden;box-shadow:var(--sh-2)}
-.cbox:after{content:"";position:absolute;left:-90px;bottom:-90px;width:220px;height:220px;border-radius:50%;background:var(--sun)}
+.cbox:after{content:"";position:absolute;left:-120px;bottom:-130px;width:220px;height:220px;border-radius:50%;background:var(--sun)}
 .cbox>*{position:relative;z-index:1}
 .cbox h2{color:#fff}.cbox .eb{color:#b9d6cd}.cbox .lead{color:#cfe4dc}
 .area{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;font-size:.93rem;color:#b9d6cd}.area span:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--sun);margin-right:9px;vertical-align:2px}
 .clist{display:flex;flex-direction:column;gap:12px}
 .crow{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:22px;background:#ffffff0f;border:1px solid #ffffff1f;color:#fff;text-decoration:none;transition:background-color .25s,transform .3s var(--ease)}
 .crow:hover{background:#ffffff1c;transform:translateY(-2px)}
-.crow .ci{width:48px;height:48px;flex:none;border-radius:16px;display:grid;place-items:center;background:var(--sun);color:var(--gold-ink)}.crow .ci.g{background:#25d366;color:#05301a}
+.crow .ci{width:48px;height:48px;flex:none;border-radius:16px;display:grid;place-items:center;background:var(--sun);color:var(--gold-ink)}.crow .ci.g{background:#25d366;color:#fff}.crow .ci.g .ic{width:26px;height:26px}
 .crow small{display:block;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:#b9d6cd}
 .crow b{display:block;font:600 1.2rem/1.3 'Bricolage Grotesque';letter-spacing:-.01em;overflow-wrap:anywhere}
 .crow>.ic{margin-left:auto;opacity:.6;transition:transform .3s var(--ease),opacity .3s}.crow:hover>.ic{transform:translateX(4px);opacity:1}
@@ -317,15 +349,17 @@ footer{background:#071f1e;color:#a9c9c1;padding:80px 0 0;font-size:.96rem;margin
 .fbrand img{height:110px;width:auto;filter:drop-shadow(0 0 2px #fff) drop-shadow(0 0 14px #ffffff99)}
 footer p{margin:16px 0;max-width:34ch}
 footer h4{color:#fff;font:600 .78rem Figtree;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;opacity:.9}
-footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10px}footer .fg a:hover{color:var(--sun)}
+footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10px}footer .fg a:hover{color:var(--sun)}footer .fg a.btn{display:inline-flex;margin:4px 0 0}footer .fg a.btn:hover{color:#04301a}
 .fb{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;border-top:1px solid #ffffff1f;margin-top:56px;padding-top:22px;padding-bottom:26px;font-size:.88rem}
 .fb a{color:var(--sun);text-decoration:none}.fb a:hover{text-decoration:underline}
 
 /* floating + mobile bar */
-.wa{position:fixed;right:22px;bottom:22px;z-index:40;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 14px 30px -10px #25d366;transition:transform .3s var(--ease)}
-.wa:hover{transform:scale(1.06)}.wa .ic{width:30px;height:30px}
+.wa{position:fixed;right:24px;bottom:24px;z-index:40;width:62px;height:62px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;text-decoration:none;box-shadow:0 0 0 6px #25d36626,0 16px 34px -10px #128c7e;transition:transform .3s var(--ease)}
+.wa:before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:waping 2.8s 2s var(--ease) infinite}
+@keyframes waping{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(1.7);opacity:0}}
+.wa:hover{transform:scale(1.07)}.wa .ic{width:32px;height:32px}
 .bar{display:none}
-@media(max-width:760px){.wa{display:none}body{padding-bottom:70px}.bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;padding-bottom:env(safe-area-inset-bottom,0px);background:var(--teal)}.bar a{display:flex;justify-content:center;align-items:center;gap:8px;min-height:62px;font-weight:700;color:#fff;text-decoration:none}.bar .w2{background:#25d366;color:#05301a}}
+@media(max-width:760px){.wa{display:none}body{padding-bottom:70px}.bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:40;padding-bottom:env(safe-area-inset-bottom,0px);background:var(--teal)}.bar a{display:flex;justify-content:center;align-items:center;gap:8px;min-height:62px;font-weight:700;color:#fff;text-decoration:none}.bar .w2{background:#25d366;color:#04301a}}
 
 /* demo notes + example tags */
 .demo-note{display:none}
@@ -343,7 +377,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <body data-demo>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <symbol id="i-call" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
-<symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path transform="translate(6.6 6.6) scale(.46)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
 <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></symbol>
@@ -368,7 +402,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <symbol id="i-drag" viewBox="0 0 24 24"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></symbol>
 </svg>
 
-<div class="demo" role="note"><b>Concept website</b> prepared for Innasol by Mago Labs. Not the live site.</div>
+<div class="demo" role="note"><b>Concept website</b> prepared for Innasol by <a href="https://themagolabs.com" target="_blank" rel="noopener">Mago Labs</a>. Not the live site.</div>
 
 <nav id="nav" aria-label="Main"><div class="w"><a class="brand" href="#top" aria-label="Innasol home"><img src="img/logo.webp" alt="Innasol logo" width="160" height="112"></a>
 <ul><li><a href="#services">Services</a></li><li><a href="#why">Why me</a></li><li><a href="#gallery">Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
@@ -405,6 +439,25 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 </div>
 </div></section>
 
+<section class="why" id="why"><div class="w"><div class="why-grid">
+<div class="why-l"><p class="eb rv">Why Innasol</p><h2 class="rv">One trusted person, <span class="soft">not a rotating crew.</span></h2>
+<p class="lead rv d1">You always know who’s coming through your door. I treat every home and business like my own, and I don’t leave until it’s right.</p>
+<a class="btn sun rv d2" href="#estimate">Get my free quote<svg class="ic arr"><use href="#i-arrow"/></svg></a></div>
+<div class="why-list">
+<div class="wc rv"><span class="n">01</span><i><svg class="ic"><use href="#i-heart"/></svg></i><h3>Trusted &amp; friendly</h3><p>A local cleaner who treats your space like her own.</p></div>
+<div class="wc rv d1"><span class="n">02</span><i><svg class="ic"><use href="#i-search"/></svg></i><h3>High attention to detail</h3><p>The corners, edges and hidden spots most people miss.</p></div>
+<div class="wc rv d1"><span class="n">03</span><i><svg class="ic"><use href="#i-cal"/></svg></i><h3>Flexible hours</h3><p>Cleaning that fits your schedule, not the other way round.</p></div>
+<div class="wc rv d2"><span class="n">04</span><i><svg class="ic"><use href="#i-spray"/></svg></i><h3>All supplies provided</h3><p>I arrive with everything needed. Nothing for you to buy.</p></div>
+</div></div></div></section>
+
+<section class="how" id="process"><div class="w">
+<p class="eb rv">How it works</p><h2 class="rv">Three simple steps.</h2><div style="height:26px"></div>
+<div class="steps rv"><div class="connect" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="step rv"><span class="bar" aria-hidden="true"></span><span class="num" aria-hidden="true">01</span><h3>Tell me what you need</h3><p>Build your quote below, or call or message me. It takes a minute.</p></div>
+<div class="step rv d1"><span class="bar" aria-hidden="true"></span><span class="num" aria-hidden="true">02</span><h3>Get your free quote</h3><p>A clear, fair price with no surprises.</p></div>
+<div class="step rv d2"><span class="bar" aria-hidden="true"></span><span class="num" aria-hidden="true">03</span><h3>Enjoy the shine</h3><p>I clean, you relax, and the space is spotless.</p></div>
+</div></div></section>
+
 <section class="ba-sec" aria-labelledby="ba-h"><div class="w"><div class="ba-grid">
 <div><p class="eb rv">The Innasol difference</p><h2 class="rv" id="ba-h">See the shine for yourself.</h2>
 <p class="lead rv d1">Drag the slider to compare. This is the standard every job is held to, whether it’s a weekly home clean or a full end of tenancy.</p>
@@ -413,25 +466,6 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <div class="ba rv d1" id="ba"><img src="img/kitchen-after.webp" alt="Kitchen after cleaning: bright, spotless worktops and cabinets" loading="lazy" width="1800" height="1079"><div class="bf"><img src="img/kitchen-before.webp" alt="Kitchen before cleaning: dull, grimy worktops and cabinets" loading="lazy" width="1800" height="1079"></div>
 <span class="lb l1">Before</span><span class="lb l2">After</span>
 <input type="range" min="0" max="100" value="50" aria-label="Compare before and after. Move left or right."><div class="hd"><span><svg class="ic"><use href="#i-drag"/></svg></span></div></div>
-</div></div></section>
-
-<section id="why"><div class="w"><div class="why-grid">
-<div><p class="eb rv">Why Innasol</p><h2 class="rv">One trusted person, <span class="soft">not a rotating crew.</span></h2>
-<p class="lead rv d1">You always know who’s coming through your door. I treat every home and business like my own, and I don’t leave until it’s right.</p>
-<a class="btn rv d2" href="#estimate">Get my free quote<svg class="ic arr"><use href="#i-arrow"/></svg></a></div>
-<div class="why-list rv d1">
-<div><i><svg class="ic"><use href="#i-heart"/></svg></i><h3>Trusted &amp; friendly</h3><p>A local cleaner who treats your space like her own.</p></div>
-<div><i><svg class="ic"><use href="#i-search"/></svg></i><h3>High attention to detail</h3><p>The corners, edges and hidden spots most people miss.</p></div>
-<div><i><svg class="ic"><use href="#i-cal"/></svg></i><h3>Flexible hours</h3><p>Cleaning that fits your schedule, not the other way round.</p></div>
-<div><i><svg class="ic"><use href="#i-spray"/></svg></i><h3>All supplies provided</h3><p>I arrive with everything needed. Nothing for you to buy.</p></div>
-</div></div></div></section>
-
-<section class="how" id="process"><div class="w">
-<p class="eb rv">How it works</p><h2 class="rv">Three simple steps.</h2>
-<div class="steps">
-<div class="step rv"><h3>Tell me what you need</h3><p>Build your quote below, or call or message me. It takes a minute.</p></div>
-<div class="step rv d1"><h3>Get your free quote</h3><p>A clear, fair price with no surprises.</p></div>
-<div class="step rv d2"><h3>Enjoy the shine</h3><p>I clean, you relax, and the space is spotless.</p></div>
 </div></div></section>
 
 <section id="gallery"><div class="w">
@@ -450,13 +484,8 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <div class="rev-top"><div><p class="eb rv">Reviews</p><h2 class="rv">What my customers say.</h2><p class="lead rv d1">Kind words from homes and businesses around Wembley.</p></div>
 <div class="rsum rv d1"><div class="big">5.0</div><div><div class="stars" aria-label="5 out of 5 stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><small>Rated by local customers on Google</small><a class="sub" id="gLink" href="#" target="_blank" rel="noopener">Read my Google reviews</a></div></div></div>
 <p class="demo-note">Example reviews and rating, for layout only. Swap in real customer reviews before launch.</p>
-<div class="rgrid">
-<article class="rc feat rv"><span class="qm" aria-hidden="true">“</span><span class="tg">End of tenancy</span><blockquote>“Irina left the flat spotless. The oven looked brand new and the grout was gleaming. My landlord had nothing to complain about.”</blockquote><div class="who"><div class="av" aria-hidden="true">S</div><div><b>Sarah M.</b><span>Wembley</span></div></div></article>
-<article class="rc rv d1"><span class="qm" aria-hidden="true">“</span><span class="tg">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article>
-<article class="rc rv"><span class="qm" aria-hidden="true">“</span><span class="tg">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article>
-<article class="rc rv d1"><span class="qm" aria-hidden="true">“</span><span class="tg">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article>
-<article class="rc rv d2"><span class="qm" aria-hidden="true">“</span><span class="tg">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article>
-</div></div></section>
+<div class="rfeat"><article class="rc feat rv"><span class="qm" aria-hidden="true">“</span><span class="tg">End of tenancy</span><blockquote>“Irina left the flat spotless. The oven looked brand new and the grout was gleaming. My landlord had nothing to complain about.”</blockquote><div class="who"><div class="av" aria-hidden="true">S</div><div><b>Sarah M.</b><span>Wembley</span></div></div></article></div>
+<div class="rmq rv d1"><div class="mrow r1"><div class="mtrack"><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article></div></div><div class="mrow r2"><div class="mtrack"><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article><article class="rc"><span class="qm" aria-hidden="true">“</span><span class="tg">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article><article class="rc" aria-hidden="true"><span class="qm" aria-hidden="true">“</span><span class="tg">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article></div></div></div></div></div></section>
 
 <section class="about" id="about"><div class="w"><div class="about-grid">
 <div class="ph-wrap rv"><div class="ph-sun" aria-hidden="true"></div>
@@ -467,7 +496,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <p class="rv d1">Innasol was built on a simple idea: cleaning should be reliable, fairly priced and done properly. Whether it’s a busy café, a school, a rental that needs to be ready to let, or your own home, I give each job the same care and attention.</p>
 <p class="rv d1">Proudly serving Wembley and surrounding areas with fast bookings and spotless results, every time.</p>
 <p class="sig rv d2">Irina<span>Founder &amp; your cleaner</span></p>
-<div class="vals rv d2"><div><b>Reliable</b><span>Here when I say I will be</span></div><div><b>Fairly priced</b><span>Clear, fair prices</span></div><div><b>High quality</b><span>Spotless, every time</span></div></div>
+<div class="vals"><div class="rv d1"><i><svg class="ic"><use href="#i-clock"/></svg></i><b>Reliable</b><span>Here when I say I will be</span></div><div class="rv d2"><i><svg class="ic"><use href="#i-shield"/></svg></i><b>Fairly priced</b><span>Clear, fair prices</span></div><div class="rv d3"><i><svg class="ic"><use href="#i-sparkle"/></svg></i><b>High quality</b><span>Spotless, every time</span></div></div>
 <p class="demo-note">Stock photo for layout. Replace with a friendly portrait of Irina.</p>
 </div></div></div></section>
 
@@ -515,7 +544,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <p class="mlab">Size of job</p>
 <div class="mt" id="mt" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <p class="mtxt" id="mtxt">Pick a service to get started.</p>
-<a class="btn wab" id="estWa" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="ic"><use href="#i-wa"/></svg>Send on WhatsApp</a>
+<a class="btn wab" id="estWa" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="ic icw" aria-hidden="true"><use href="#i-wa"/></svg>Send on WhatsApp</a>
 <a class="btn ghost" id="estMail" href="#" aria-disabled="true">Email it instead</a>
 <p class="fine">Sending this doesn’t book anything. I’ll reply with your free quote.</p>
 </aside>
@@ -538,21 +567,21 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:10
 <p class="area"><span>Wembley &amp; surrounding areas</span><span>Flexible hours</span><span>Fast bookings</span></p></div>
 <div class="clist rv d1">
 <a class="crow tl" href="#"><span class="ci"><svg class="ic"><use href="#i-call"/></svg></span><span><small>Call Irina</small><b class="pn">07XXX XXXXXX</b></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-<a class="crow wl" href="#" target="_blank" rel="noopener"><span class="ci g"><svg class="ic"><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b>Message Irina</b></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+<a class="crow wl" href="#" target="_blank" rel="noopener"><span class="ci g"><svg class="ic icw" aria-hidden="true"><use href="#i-wa"/></svg></span><span><small>WhatsApp</small><b>Message Irina</b></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 <a class="crow ml" href="#"><span class="ci"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small><b id="mailL">your@email.com</b></span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 <a class="btn sun" href="#estimate">Get my free quote<svg class="ic arr"><use href="#i-arrow"/></svg></a>
 </div></div></div></section>
 </main>
 
 <footer><div class="w fg">
-<div><a class="fbrand" href="#top" aria-label="Innasol home"><img src="img/logo.webp" alt="Innasol logo" width="160" height="112" loading="lazy"></a><p>Professional local cleaning for homes and businesses. Reliable, fairly priced and high quality, with spotless results every time.</p><a class="btn sun wl" href="#" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Chat on WhatsApp</a></div>
+<div><a class="fbrand" href="#top" aria-label="Innasol home"><img src="img/logo.webp" alt="Innasol logo" width="160" height="112" loading="lazy"></a><p>Professional local cleaning for homes and businesses. Reliable, fairly priced and high quality, with spotless results every time.</p><a class="btn wapp wl" href="#" target="_blank" rel="noopener"><svg class="ic icw" aria-hidden="true"><use href="#i-wa"/></svg>Chat on WhatsApp</a></div>
 <div><h4>Explore</h4><a href="#services">Services</a><a href="#why">Why choose me</a><a href="#process">How it works</a><a href="#gallery">Recent work</a><a href="#reviews">Reviews</a><a href="#about">About Irina</a><a href="#estimate">Get a quote</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
 <div><h4>Services</h4><span>Home cleaning</span><span>Commercial cleaning</span><span>Deep cleaning</span><span>End of tenancy</span><span>After-building cleans</span><span>Ovens &amp; appliances</span></div>
 <div><h4>Get in touch</h4><a class="tl" href="#">Call Irina</a><a class="ml" href="#">Email</a><a class="wl" href="#" target="_blank" rel="noopener">WhatsApp</a><span>Wembley &amp; surrounding areas</span><span>Flexible hours · Fast bookings</span></div>
 </div>
-<div class="w fb"><span>© <span id="y"></span> Innasol. All rights reserved.</span><span>Website by <a href="https://magolabs.in" target="_blank" rel="noopener">Mago Labs</a></span><a href="#top">Back to top ↑</a></div></footer>
-<div class="bar"><a class="tl" href="#"><svg class="ic"><use href="#i-call"/></svg>Call now</a><a class="w2 wl" href="#" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp</a></div>
-<a class="wa wl" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+<div class="w fb"><span>© <span id="y"></span> Innasol. All rights reserved.</span><span>Website by <a href="https://themagolabs.com" target="_blank" rel="noopener">Mago Labs</a></span><a href="#top">Back to top ↑</a></div></footer>
+<div class="bar"><a class="tl" href="#"><svg class="ic"><use href="#i-call"/></svg>Call now</a><a class="w2 wl" href="#" target="_blank" rel="noopener"><svg class="ic icw" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a></div>
+<a class="wa wl" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="ic icw" aria-hidden="true"><use href="#i-wa"/></svg></a>
 
 <script>
 document.documentElement.classList.add('js');
@@ -591,6 +620,8 @@ addEventListener('resize',()=>{if(innerWidth>860)set(false)})})();
 (function(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
 $a('.rv').forEach(el=>io.observe(el))})();
 
+// spotlight on why cards
+$a('.wc').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
 // before / after slider
 (function(){const ba=$('#ba'),r=ba.querySelector('input');
 const set=v=>ba.style.setProperty('--p',v+'%');r.addEventListener('input',()=>set(r.value));
