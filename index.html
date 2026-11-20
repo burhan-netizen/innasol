@@ -55,6 +55,15 @@ nav ul a{text-decoration:none;font-weight:500;font-size:.96rem;color:var(--ink);
 .btn.sun{background:var(--sun);color:var(--gold-ink);box-shadow:0 1px 0 #ffffff55 inset,0 10px 24px -10px #b9801499}.btn.sun:hover{box-shadow:0 1px 0 #ffffff55 inset,0 16px 30px -12px #b98014bb}
 .btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--ink) 35%,transparent)}.btn.ghost:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
 @media(max-width:760px){nav ul{display:none}}
+.mbtn{display:none;width:48px;height:48px;flex:none;border-radius:50%;border:1px solid var(--line);background:var(--card);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.mbtn i{display:block;width:18px;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s var(--ease),opacity .2s}
+.mbtn[aria-expanded=true] i:nth-child(1){transform:translateY(7px) rotate(45deg)}.mbtn[aria-expanded=true] i:nth-child(2){opacity:0}.mbtn[aria-expanded=true] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -20px #0d3b3a40;max-height:calc(100dvh - 76px);overflow:auto;animation:fade .3s var(--ease)}
+.mnav .w{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;height:auto;padding-top:10px;padding-bottom:24px}
+.mnav .w>a{display:flex;align-items:center;min-height:54px;border-bottom:1px solid var(--line);text-decoration:none;font:600 1.3rem 'Bricolage Grotesque';letter-spacing:-.02em;color:var(--ink)}
+.mfoot{display:flex;flex-direction:column;gap:12px;margin-top:22px}.mcall{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;border-radius:99px;border:1px solid var(--line);background:var(--card);text-decoration:none;font-weight:600;color:var(--ink)}.mcall .ic{width:18px;height:18px;color:var(--green)}.mfoot .btn{width:100%}
+@media(max-width:760px){.mbtn{display:flex}.nr{gap:10px}.nr .btn.sun{min-height:46px;padding:10px 18px;font-size:.95rem}}
+@media(min-width:761px){.mnav{display:none!important}}
 /* hero */
 .hero{position:relative;padding:72px 0 130px;overflow:hidden;background:radial-gradient(ellipse at 75% 30%,#ffe9a8aa,transparent 60%),var(--bg)}
 .hero .w{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
@@ -141,7 +150,7 @@ nav ul a{text-decoration:none;font-weight:500;font-size:.96rem;color:var(--ink);
 @media(max-width:640px){.step:after{display:none}}
 .step{padding-top:72px}.step h3{font-size:1.4rem;margin-bottom:8px}.step p{color:var(--muted);max-width:32ch}
 /* faq */
-.faq{background:var(--mint)}
+.how{background:var(--mint)}
 .faq .w{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:start}.faq .fh{position:sticky;top:110px}.faq details:first-child{margin-top:0}
 @media(max-width:860px){.faq .w{grid-template-columns:1fr}.faq .fh{position:static}}
 details{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:0 24px;margin-top:12px;box-shadow:var(--sh-1);transition:box-shadow .3s}details[open]{box-shadow:var(--sh-2)}
@@ -190,6 +199,7 @@ input:focus,textarea:focus{border-color:var(--teal);outline:0;box-shadow:0 0 0 3
 .mq{background:var(--teal);color:#e8f4ef;overflow:hidden;white-space:nowrap;padding:20px 0;font:500 1.1rem 'Bricolage Grotesque';letter-spacing:-.01em}
 .mq div{display:inline-block;animation:mq 28s linear infinite}.mq span{margin:0 26px}.mq span:after{content:"☀";margin-left:52px;color:var(--sun)}
 @keyframes mq{to{transform:translateX(-50%)}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;margin-top:44px}
 .ph{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(160deg,var(--mint),color-mix(in srgb,var(--sun) 14%,var(--card)));border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-weight:600;color:var(--ink);text-align:center;padding:10px;box-shadow:var(--sh-1);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .ph:hover{transform:translateY(-3px);box-shadow:var(--sh-2)}.ph small{font-weight:400;color:var(--muted)}.ph em{font-style:normal;font-size:1.6rem;opacity:.8}
@@ -266,8 +276,9 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-call" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/><path transform="translate(6.6 6.6) scale(.46)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol></svg>
 <nav><div class="w"><a class="brand" href="#top" aria-label="Innasol home"><img class="ls" alt="Innasol logo"></a>
-<ul><li><a href="#services">Services</a></li><li><a href="#estimate">Get a quote</a></li><li><a href="#why">Why me</a></li><li><a href="#about">About</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul>
-<div class="nr"><a class="np tl" href="#"><svg class="ic"><use href="#i-call"/></svg><span class="pn">Call Irina</span></a><a class="btn sun" href="#estimate">Free quote</a></div></div></nav>
+<ul><li><a href="#services">Services</a></li><li><a href="#why">Why me</a></li><li><a href="#gallery">Work</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li></ul>
+<div class="nr"><a class="np tl" href="#"><svg class="ic"><use href="#i-call"/></svg><span class="pn">Call Irina</span></a><a class="btn sun" href="#estimate">Free quote</a><button class="mbtn" id="mbtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button></div></div>
+<div class="mnav" id="mnav" hidden><div class="w"><a href="#services">Services</a><a href="#why">Why me</a><a href="#process">How it works</a><a href="#gallery">Work</a><a href="#reviews">Reviews</a><a href="#about">About</a><a href="#faq">FAQ</a><div class="mfoot"><a class="mcall tl" href="#"><svg class="ic"><use href="#i-call"/></svg><span class="pn">Call Irina</span></a><a class="btn" href="#estimate">Get my free quote</a></div></div></div></nav>
 
 <header class="hero" id="top">
 <div id="bubbles" aria-hidden="true"></div>
@@ -284,7 +295,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 <svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#eaf6e3" d="M0 40C240 80 480 0 720 30s480 50 720 0V70H0z"/></svg>
 </header>
 
-<div class="mq" aria-hidden="true"><div><span>Commercial cleaning</span><span>Deep cleaning</span><span>End of tenancy</span><span>After builders</span><span>Ready-to-let</span><span>Ovens &amp; appliances</span><span>Commercial cleaning</span><span>Deep cleaning</span><span>End of tenancy</span><span>After builders</span><span>Ready-to-let</span><span>Ovens &amp; appliances</span></div></div>
+<div class="mq" role="region" aria-label="Why customers choose Innasol"><ul class="sr"><li>All supplies provided</li><li>Based in Wembley</li><li>Flexible hours</li><li>Fast bookings</li><li>Homes &amp; businesses</li><li>One trusted cleaner, not a crew</li></ul><div aria-hidden="true"><span>All supplies provided</span><span>Based in Wembley</span><span>Flexible hours</span><span>Fast bookings</span><span>Homes &amp; businesses</span><span>One trusted cleaner, not a crew</span><span>All supplies provided</span><span>Based in Wembley</span><span>Flexible hours</span><span>Fast bookings</span><span>Homes &amp; businesses</span><span>One trusted cleaner, not a crew</span></div></div>
 <section class="svc" id="services"><div class="w">
 <p class="eb rv">Services</p>
 <h2 class="rv">Cleaning for homes and businesses</h2>
@@ -296,6 +307,65 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 <div class="panel" id="p2" role="tabpanel">
 <div class="it"><em>📦</em>End of tenancy</div><div class="it"><em>🏗️</em>After-building &amp; renovation cleaning</div><div class="it"><em>🔑</em>Ready-to-let property</div><div class="it"><em>🔌</em>Behind appliances</div>
 <div class="it"><em>🧊</em>Inside ovens, fridges &amp; cabinets</div><div class="it"><em>🧽</em>Grout &amp; tile scrubbing</div></div>
+</div></section>
+
+<section id="why"><div class="w">
+<p class="eb rv">Why Innasol</p>
+<h2 class="rv">Why choose me?</h2>
+<p class="lead rv">You get one trusted person, not a rotating crew.</p>
+<div class="why rv">
+<div><span>🤝</span><b>Trusted &amp; friendly</b>A local cleaner who treats your space like her own.</div>
+<div><span>🔍</span><b>High attention to detail</b>The corners, edges and hidden spots most people miss.</div>
+<div><span>🗓️</span><b>Flexible hours</b>Cleaning that fits your schedule, not the other way round.</div>
+<div><span>🧴</span><b>All supplies provided</b>I arrive with everything needed. Nothing for you to buy.</div>
+</div></div></section>
+
+<section class="how" id="process"><div class="w"><p class="eb rv">How it works</p><h2 class="rv">Three simple steps</h2>
+<div class="steps rv">
+<div class="step"><h3>Tell me what you need</h3><p>Build your quote below, or call or message me. It takes a minute.</p></div>
+<div class="step"><h3>Get your free quote</h3><p>A clear, fair price with no surprises.</p></div>
+<div class="step"><h3>Enjoy the shine</h3><p>I clean, you relax, and the space is spotless.</p></div>
+</div></div></section>
+
+<section id="gallery"><div class="w"><p class="eb rv">Recent work</p><h2 class="rv">See the Innasol difference</h2><p class="lead rv">Real jobs, real results. Photos and videos of recent cleans.</p>
+<div class="gal rv">
+<!-- Replace each .ph block with an <img> or <video> -->
+<div class="ph g2"><em>📷</em>Before &amp; after photo<small>Add your photo here</small></div>
+<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
+<div class="ph g3"><div class="play">▶</div>Video<small>Add your video here</small></div>
+<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
+<div class="ph g3"><div class="play">▶</div>Video<small>Add your video here</small></div>
+<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
+</div></div></section>
+
+<!-- REVIEWS: these are EXAMPLE reviews. To go live: replace each <article class="rc"> with a real review, then DELETE the data-demo attribute on this <section> (that also removes the EXAMPLE tags and the yellow note). Update the rating in .rsum and set GOOGLE_REVIEWS_URL in the script. -->
+<section class="rev" id="reviews" data-demo><div class="w">
+<p class="eb rv">Reviews</p>
+<h2 class="rv">What my customers say</h2>
+<p class="lead rv">Kind words from homes and businesses around Wembley.</p>
+<div class="rsum rv"><div class="big">5.0</div><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><small>Rated by local customers on Google</small></div><a class="btn ghost" id="gLink" href="#" target="_blank" rel="noopener">Read my Google reviews</a></div>
+<p class="demo-note">Example reviews and rating, for layout only. Swap in real customer reviews before launch.</p>
+<div class="rgrid rv">
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">End of tenancy</span><blockquote>“Irina left the flat spotless. The oven looked brand new and the grout was gleaming. My landlord had nothing to complain about.”</blockquote><div class="who"><div class="av" aria-hidden="true">S</div><div><b>Sarah M.</b><span>Wembley</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along. One person we can trust.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article>
+<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Ready to let</span><blockquote>“We needed a quick turnaround between tenants. Booked fast and the place was spotless. We’ll definitely use her again.”</blockquote><div class="who"><div class="av" aria-hidden="true">T</div><div><b>Tom &amp; Aisha R.</b><span>Wembley Park</span></div></div></article>
+</div>
+</div></section>
+
+<section class="about" id="about"><div class="w">
+<div class="portrait rv"><div class="pr-rays" aria-hidden="true"></div>
+<!-- Replace the contents of .pr-frame with: <img src="irina.jpg" alt="Irina, owner of Innasol"> -->
+<div class="pr-frame"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="34" r="17"/><path d="M14 96c0-22 16-36 36-36s36 14 36 36z"/></svg>Irina’s photo<small>Add a friendly portrait here</small></div>
+<div class="pr-badge b1">⭐ Trusted local cleaner</div><div class="pr-badge b2">📍 Wembley &amp; around</div>
+<div class="pr-name"><b>Irina</b><span>Founder, Innasol</span></div></div>
+<div class="rv"><p class="eb">Meet Irina</p><h2>Sunshine in every room</h2>
+<p>Innasol was built on a simple idea: cleaning should be reliable, fairly priced and done properly. Whether it’s a busy café, a school, a rental that needs to be ready to let, or your own home, I give each job the same care and attention.</p>
+<p style="margin-top:12px">Proudly serving Wembley and surrounding areas with fast bookings and spotless results, every time.</p>
+<div class="vals"><div><b>Reliable</b><span>Here when I say I will be</span></div><div><b>Fairly priced</b><span>Clear, fair prices</span></div><div><b>High quality</b><span>Spotless, every time</span></div></div>
+<div class="cta"><a class="btn" href="#estimate">Get my free quote</a><a class="btn ghost wl" href="#" target="_blank" rel="noopener">Message Irina</a></div></div>
 </div></section>
 
 <section class="est" id="estimate"><div class="w">
@@ -349,63 +419,6 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 </aside>
 </div></div></section>
 
-<section id="why"><div class="w">
-<p class="eb rv">Why Innasol</p>
-<h2 class="rv">Why choose me?</h2>
-<p class="lead rv">You get one trusted person, not a rotating crew.</p>
-<div class="why rv">
-<div><span>🤝</span><b>Trusted &amp; friendly</b>A local cleaner who treats your space like her own.</div>
-<div><span>🔍</span><b>High attention to detail</b>The corners, edges and hidden spots most people miss.</div>
-<div><span>🗓️</span><b>Flexible hours</b>Cleaning that fits your schedule, not the other way round.</div>
-<div><span>🧴</span><b>All supplies provided</b>I arrive with everything needed. Nothing for you to buy.</div>
-</div></div></section>
-
-<section class="about" id="about"><div class="w">
-<div class="portrait rv"><div class="pr-rays" aria-hidden="true"></div>
-<!-- Replace the contents of .pr-frame with: <img src="irina.jpg" alt="Irina, owner of Innasol"> -->
-<div class="pr-frame"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="34" r="17"/><path d="M14 96c0-22 16-36 36-36s36 14 36 36z"/></svg>Irina’s photo<small>Add a friendly portrait here</small></div>
-<div class="pr-badge b1">⭐ Trusted local cleaner</div><div class="pr-badge b2">📍 Wembley &amp; around</div>
-<div class="pr-name"><b>Irina</b><span>Founder, Innasol</span></div></div>
-<div class="rv"><p class="eb">Meet Irina</p><h2>Sunshine in every room</h2>
-<p>Innasol was built on a simple idea: cleaning should be reliable, fairly priced and done properly. Whether it’s a busy café, a school, a rental that needs to be ready to let, or your own home, I give each job the same care and attention.</p>
-<p style="margin-top:12px">Proudly serving Wembley and surrounding areas with fast bookings and spotless results, every time.</p>
-<div class="vals"><div><b>Reliable</b><span>Here when I say I will be</span></div><div><b>Fairly priced</b><span>Clear, fair prices</span></div><div><b>High quality</b><span>Spotless, every time</span></div></div>
-<div class="cta"><a class="btn" href="#estimate">Get my free quote</a><a class="btn ghost wl" href="#" target="_blank" rel="noopener">Message Irina</a></div></div>
-</div></section>
-
-<section id="gallery"><div class="w"><p class="eb rv">Recent work</p><h2 class="rv">See the Innasol difference</h2><p class="lead rv">Real jobs, real results. Photos and videos of recent cleans.</p>
-<div class="gal rv">
-<!-- Replace each .ph block with an <img> or <video> -->
-<div class="ph g2"><em>📷</em>Before &amp; after photo<small>Add your photo here</small></div>
-<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
-<div class="ph g3"><div class="play">▶</div>Video<small>Add your video here</small></div>
-<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
-<div class="ph g3"><div class="play">▶</div>Video<small>Add your video here</small></div>
-<div class="ph"><em>📷</em>Photo</div><div class="ph"><em>📷</em>Photo</div>
-</div></div></section>
-<!-- REVIEWS: these are EXAMPLE reviews. To go live: replace each <article class="rc"> with a real review, then DELETE the data-demo attribute on this <section> (that also removes the EXAMPLE tags and the yellow note). Update the rating in .rsum and set GOOGLE_REVIEWS_URL in the script. -->
-<section class="rev" id="reviews" data-demo><div class="w">
-<p class="eb rv">Reviews</p>
-<h2 class="rv">What my customers say</h2>
-<p class="lead rv">Kind words from homes and businesses around Wembley.</p>
-<div class="rsum rv"><div class="big">5.0</div><div><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><small>Rated by local customers on Google</small></div><a class="btn ghost" id="gLink" href="#" target="_blank" rel="noopener">Read my Google reviews</a></div>
-<p class="demo-note">Example reviews and rating, for layout only. Swap in real customer reviews before launch.</p>
-<div class="rgrid rv">
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">End of tenancy</span><blockquote>“Irina left the flat spotless. The oven looked brand new and the grout was gleaming. My landlord had nothing to complain about.”</blockquote><div class="who"><div class="av" aria-hidden="true">S</div><div><b>Sarah M.</b><span>Wembley</span></div></div></article>
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Deep clean</span><blockquote>“So thorough. Behind the appliances, the corners, all the spots other cleaners skip. Friendly and arrived exactly when she said she would.”</blockquote><div class="who"><div class="av" aria-hidden="true">D</div><div><b>David K.</b><span>Kingsbury</span></div></div></article>
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Office clean</span><blockquote>“We’ve used Innasol for our small office for months. Always on time, always tidy, and all the supplies are brought along. One person we can trust.”</blockquote><div class="who"><div class="av" aria-hidden="true">P</div><div><b>Priya S.</b><span>Harrow</span></div></div></article>
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">After builders</span><blockquote>“After our renovation the house was covered in dust. Irina made it feel like a home again. Brilliant attention to detail.”</blockquote><div class="who"><div class="av" aria-hidden="true">M</div><div><b>Marcus T.</b><span>Alperton</span></div></div></article>
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Café clean</span><blockquote>“Our café has never looked so fresh. Irina works around our opening hours and there is never any fuss.”</blockquote><div class="who"><div class="av" aria-hidden="true">E</div><div><b>Elena V.</b><span>Neasden</span></div></div></article>
-<article class="rc"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><span class="tag">Ready to let</span><blockquote>“We needed a quick turnaround between tenants. Booked fast and the place was spotless. We’ll definitely use her again.”</blockquote><div class="who"><div class="av" aria-hidden="true">T</div><div><b>Tom &amp; Aisha R.</b><span>Wembley Park</span></div></div></article>
-</div>
-</div></section>
-<section><div class="w"><p class="eb rv">How it works</p><h2 class="rv">Three simple steps</h2>
-<div class="steps rv">
-<div class="step"><h3>Tell me what you need</h3><p>Build your quote above, or call or message me. It takes a minute.</p></div>
-<div class="step"><h3>Get your free quote</h3><p>A clear, fair price with no surprises.</p></div>
-<div class="step"><h3>Enjoy the shine</h3><p>I clean, you relax, and the space is spotless.</p></div>
-</div></div></section>
-
 <section class="faq" id="faq"><div class="w"><div class="fh"><p class="eb rv">FAQ</p><h2 class="rv">Common questions</h2><p class="lead rv">Anything else? Just call or message Irina.</p></div><div class="fl">
 <details><summary>Do I need to provide cleaning products?</summary><p>No. All supplies are provided.</p></details>
 <details><summary>Do you offer end of tenancy and ready-to-let cleaning?</summary><p>Yes. This includes inside ovens, fridges and cabinets, behind appliances, and grout and tile scrubbing.</p></details>
@@ -417,7 +430,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 
 <section class="contact" id="contact"><div class="w">
 <div class="cinfo rv"><p class="eb">Get in touch</p><h2>Let’s make it sparkle</h2>
-<p class="lead">Send me your quote from the builder above, or get in touch directly. Call, WhatsApp or email, whichever suits you, and I’ll come back with your free quote.</p>
+<p class="lead">Built your quote above? Send it on WhatsApp in one tap, or get in touch directly. Call, WhatsApp or email, whichever suits you, and I’ll come back with your free quote.</p>
 <p class="area"><span>Wembley &amp; surrounding areas</span><span>Flexible hours</span><span>Fast bookings</span></p></div>
 <div class="clist rv">
 <a class="crow tl" href="#"><span class="ci"><svg class="ic"><use href="#i-call"/></svg></span><span><small>Call Irina</small><b id="phoneL">07XXX XXXXXX</b></span><i aria-hidden="true">→</i></a>
@@ -429,7 +442,7 @@ footer .fg a,footer .fg span{display:block;text-decoration:none;margin-bottom:9p
 
 <footer><div class="w fg">
 <div><a class="brand" href="#top" aria-label="Innasol home"><img class="ls lf" alt="Innasol logo"></a><p>Professional local cleaning for homes and businesses. Reliable, fairly priced and high quality, with spotless results every time.</p><a class="btn sun wl" href="#" target="_blank" rel="noopener" style="display:inline-flex;margin:0">Chat on WhatsApp</a></div>
-<div><h4>Explore</h4><a href="#services">Services</a><a href="#why">Why choose me</a><a href="#about">About Irina</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#estimate">Get a quote</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
+<div><h4>Explore</h4><a href="#services">Services</a><a href="#why">Why choose me</a><a href="#process">How it works</a><a href="#gallery">Recent work</a><a href="#reviews">Reviews</a><a href="#about">About Irina</a><a href="#estimate">Get a quote</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
 <div><h4>Services</h4><span>Commercial cleaning</span><span>Deep cleaning</span><span>End of tenancy</span><span>After-building cleans</span><span>Ready-to-let property</span></div>
 <div><h4>Get in touch</h4><a class="tl" href="#">Call Irina</a><a class="ml" href="#">Email</a><a class="wl" href="#" target="_blank" rel="noopener">WhatsApp</a><span>Wembley &amp; surrounding areas</span><span>Flexible hours · Fast bookings</span></div>
 </div>
@@ -446,6 +459,13 @@ $('#y').textContent=new Date().getFullYear();
 $('#phoneL').textContent=PHONE;$('#mailL').textContent=EMAIL;document.querySelectorAll('.pn').forEach(e=>e.textContent=PHONE);
 // tabs
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===t.dataset.p))});
+// mobile menu
+(function(){const b=$('#mbtn'),m=$('#mnav');
+function set(o){b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');m.hidden=!o}
+b.onclick=()=>set(b.getAttribute('aria-expanded')!=='true');
+m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!m.hidden){set(false);b.focus()}});
+addEventListener('resize',()=>{if(innerWidth>760)set(false)})})();
 // bubbles
 const B=$('#bubbles');for(let i=0;i<14;i++){const b=document.createElement('i');b.className='bub';const s=8+Math.random()*28;b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${9+Math.random()*12}s;animation-delay:${-Math.random()*15}s`;B.appendChild(b)}
 B.style.cssText='position:absolute;inset:0;overflow:hidden;pointer-events:none';
