@@ -8,7 +8,8 @@ This is a CONCEPT version prepared by Mago Labs. Before going live:
 2. Remove the concept banner: delete the <div class="demo" ...> line near the top of <body>.
 3. Remove all EXAMPLE tags and yellow placeholder notes: delete data-demo from <body data-demo>.
 4. Remove <meta name="robots" content="noindex"> so Google can index the live site.
-5. Replace YOURDOMAIN.co.uk in the og:image and twitter:image tags with the real domain.
+5. Share previews use https://innasol.vercel.app (og:url, og:image, twitter:image, canonical). Switch to her real domain when it is live.
+   Share images: og-image.jpg (1200x630, links) and social-share.jpg (1080x1080, Instagram/Facebook posts).
 6. Photos in /img are Unsplash stock placeholders. Replace with Irina's real photos (same file names, WebP):
    - hero.webp (hero), irina.webp (portrait in About)
    - home / office / deep / tenancy / builders .webp (service cards)
