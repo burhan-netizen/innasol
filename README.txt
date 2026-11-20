@@ -1,15 +1,18 @@
 INNASOL WEBSITE - SETUP NOTES
 
-Upload everything to the root of your hosting / GitHub repo (index.html at the top level).
+This is a CONCEPT version prepared by Mago Labs. Before going live:
 
-BEFORE GOING LIVE, open index.html and change:
-1. PHONE and EMAIL  (search: EDIT YOUR CONTACT DETAILS HERE)
-2. WA = WhatsApp number, country code first, no + or spaces, e.g. 447123456789
-3. YOURDOMAIN.co.uk (two og:image / twitter:image tags near the top) -> real domain
-4. Gallery: replace each <div class="ph"> block (search: Replace each .ph block)
-5. Irina's portrait: search 'Replace the contents of .pr-frame' and put <img src="irina.jpg" alt="Irina, owner of Innasol"> inside .pr-frame; upload irina.jpg next to index.html
-
-NEW: REVIEWS + QUOTE BUILDER
-6. Reviews: the 6 reviews are EXAMPLES. Replace each <article class="rc"> with a real review (search: REVIEWS), update the 5.0 rating, then DELETE the data-demo attribute on <section id="reviews"> - that removes the EXAMPLE tags and the yellow note.
-7. Google reviews button: set GOOGLE_REVIEWS_URL in the script (leave "" to hide the button).
-8. Quote builder (#estimate): shows no prices. It sends the customer's choices to WhatsApp (and email) using the WA, EMAIL values above. Edit services/sizes in the script (search: Quote builder).
+1. Contact details: open index.html, search "EDIT YOUR CONTACT DETAILS HERE"
+   - PHONE, EMAIL, WA (WhatsApp: country code + number, no + or spaces, e.g. 447123456789)
+   - GOOGLE_REVIEWS_URL (leave "" to hide the link)
+2. Remove the concept banner: delete the <div class="demo" ...> line near the top of <body>.
+3. Remove all EXAMPLE tags and yellow placeholder notes: delete data-demo from <body data-demo>.
+4. Remove <meta name="robots" content="noindex"> so Google can index the live site.
+5. Replace YOURDOMAIN.co.uk in the og:image and twitter:image tags with the real domain.
+6. Photos in /img are Unsplash stock placeholders. Replace with Irina's real photos (same file names, WebP):
+   - hero.webp (hero), irina.webp (portrait in About)
+   - home / office / deep / tenancy / builders .webp (service cards)
+   - kitchen-before.webp + kitchen-after.webp (before/after slider, same room, same angle)
+   - kitchen2 / bathroom / wipe / office2 .webp (Recent work gallery)
+7. Reviews: replace each <article class="rc"> with a real review and update the 5.0 rating (search: REVIEWS).
+8. Quote builder (#estimate) shows no prices. It sends the customer's choices to WhatsApp or email.
